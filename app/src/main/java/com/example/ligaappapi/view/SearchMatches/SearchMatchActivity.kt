@@ -12,8 +12,10 @@ import com.example.ligaappapi.api.ApiRepository
 import com.example.ligaappapi.model.Match
 import com.example.ligaappapi.util.invisible
 import com.example.ligaappapi.util.visible
+import com.example.ligaappapi.view.DetailMatch.MatchDetailActivity
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_search_match.*
+import org.jetbrains.anko.startActivity
 
 class SearchMatchActivity : AppCompatActivity(), SearchMatchView {
     private lateinit var presenter: SearchMatchPresenter
@@ -29,7 +31,9 @@ class SearchMatchActivity : AppCompatActivity(), SearchMatchView {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        adapter = SearchMatchAdapter(matchs, applicationContext)
+        adapter = SearchMatchAdapter(matchs, applicationContext){
+            applicationContext?.startActivity<MatchDetailActivity>("idEvent" to it.idMatch, "idHome" to it.idHomeTeam, "idAway" to it.idAwayTeam)
+        }
         rvFootballSearch.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
         rvFootballSearch.adapter = adapter
 
@@ -50,7 +54,7 @@ class SearchMatchActivity : AppCompatActivity(), SearchMatchView {
     override fun showSearchMatchList(data: List<Match>) {
         val dataFilter: List<Match> = data.filter { it.strSport == "Soccer" }
         if (dataFilter?.isEmpty()){
-            emptyMessage.setText("Match Data Not Found")
+            emptyMessage.setText(getString(R.string.not_found_message))
         }
         matchs.clear()
         matchs.addAll(dataFilter)
@@ -61,7 +65,7 @@ class SearchMatchActivity : AppCompatActivity(), SearchMatchView {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_search, menu)
         val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView?
-        searchView?.queryHint = "Search Matches"
+        searchView?.queryHint = getString(R.string.search_matches)
 
         searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {

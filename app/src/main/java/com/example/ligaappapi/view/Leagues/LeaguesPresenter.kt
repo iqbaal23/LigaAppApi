@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.main
+package com.example.ligaappapi.view.Leagues
 
 import com.example.ligaappapi.api.ApiRepository
 import com.example.ligaappapi.api.TheSportDBApi
@@ -7,9 +7,9 @@ import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
-class MainPresenter (private val view: MainView,
-                     private val apiRepository: ApiRepository,
-                     private val gson: Gson){
+class LeaguesPresenter (private val view: LeaguesView,
+                        private val apiRepository: ApiRepository,
+                        private val gson: Gson){
 
 
     fun getLeagueList(){

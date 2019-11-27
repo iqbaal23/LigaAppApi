@@ -2,6 +2,7 @@ package com.example.ligaappapi.view.DetailMatch
 
 import com.example.ligaappapi.api.ApiRepository
 import com.example.ligaappapi.api.TheSportDBApi
+import com.example.ligaappapi.model.MatchResponse
 import com.example.ligaappapi.model.TeamResponse
 import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
@@ -11,8 +12,13 @@ class MatchDetailPresenter(private val view: MatchDetailView,
                            private val apiRepository: ApiRepository,
                            private val gson: Gson) {
 
-    fun getTeamDetail(idHomeTeam: String?, idAwayTeam: String?){
+    fun getMatchDetail(idEvent:String?, idHomeTeam: String?, idAwayTeam: String?){
+        view.showLoading()
         doAsync {
+            val match = gson.fromJson(apiRepository
+                .doRequest(TheSportDBApi.getMatchDetail(idEvent)),
+                MatchResponse::class.java)
+
             val homeTeam = gson.fromJson(apiRepository
                 .doRequest(TheSportDBApi.getTeamDetail(idHomeTeam)),
                 TeamResponse::class.java)
@@ -22,7 +28,8 @@ class MatchDetailPresenter(private val view: MatchDetailView,
                 TeamResponse::class.java)
 
             uiThread {
-                view.showTeamDetailList(homeTeam.teams, awayTeam.teams)
+                view.hideLoading()
+                view.showTeamDetailList(match.match, homeTeam.teams, awayTeam.teams)
             }
         }
     }

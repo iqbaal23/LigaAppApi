@@ -37,8 +37,8 @@ class LeagueDetailActivity : AppCompatActivity(){
         val nextMatchFragment = NextMatchFragment()
         lastMatchFragment.arguments = bundle
         nextMatchFragment.arguments = bundle
-        adapter.populateFragment(lastMatchFragment, "Last Match")
-        adapter.populateFragment(nextMatchFragment, "Next Match")
+        adapter.populateFragment(lastMatchFragment, getString(R.string.last_match))
+        adapter.populateFragment(nextMatchFragment, getString(R.string.next_match))
         viewpagerLeague.adapter = adapter
         tabs.setupWithViewPager(viewpagerLeague)
 
@@ -61,7 +61,7 @@ class LeagueDetailActivity : AppCompatActivity(){
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_search, menu)
         val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView?
-        searchView?.queryHint = "Search Matches"
+        searchView?.queryHint = getString(R.string.search_matches)
 
         searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {

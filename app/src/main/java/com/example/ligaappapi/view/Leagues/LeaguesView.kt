@@ -1,8 +1,8 @@
-package com.example.ligaappapi.view.main
+package com.example.ligaappapi.view.Leagues
 
 import com.example.ligaappapi.model.League
 
-interface MainView {
+interface LeaguesView {
     fun showLoading()
     fun hideLoading()
     fun showLeagueList(data: List<League>)

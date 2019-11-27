@@ -15,8 +15,10 @@ import com.example.ligaappapi.model.League
 import com.example.ligaappapi.model.Match
 import com.example.ligaappapi.util.invisible
 import com.example.ligaappapi.util.visible
+import com.example.ligaappapi.view.DetailMatch.MatchDetailActivity
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_next_match.*
+import org.jetbrains.anko.startActivity
 
 /**
  * A simple [Fragment] subclass.
@@ -35,7 +37,9 @@ class NextMatchFragment : Fragment(), NextMatchView {
         super.onActivityCreated(savedInstanceState)
         val league = arguments?.getParcelable("league") as League
 
-        adapter = MatchAdapter(matchs, context)
+        adapter = MatchAdapter(matchs, context){
+            context?.startActivity<MatchDetailActivity>("idEvent" to it.idMatch, "idHome" to it.idHomeTeam, "idAway" to it.idAwayTeam)
+        }
         rvFootballNext.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rvFootballNext.adapter = adapter
 

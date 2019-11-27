@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.main
+package com.example.ligaappapi.view.Leagues
 
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
@@ -13,7 +13,7 @@ import com.example.ligaappapi.model.League
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 
-class MainAdapter (private val leagues: List<League>)
+class LeaguesAdapter (private val leagues: List<League>)
     : RecyclerView.Adapter<LeagueViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
         return LeagueViewHolder(LeagueUI().createView(AnkoContext.Companion.create(parent.context, parent)))

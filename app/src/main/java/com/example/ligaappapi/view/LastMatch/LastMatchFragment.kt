@@ -14,8 +14,10 @@ import com.example.ligaappapi.model.League
 import com.example.ligaappapi.model.Match
 import com.example.ligaappapi.util.invisible
 import com.example.ligaappapi.util.visible
+import com.example.ligaappapi.view.DetailMatch.MatchDetailActivity
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_last_match.*
+import org.jetbrains.anko.startActivity
 
 class LastMatchFragment : Fragment(), LastMatchView {
     private lateinit var presenter: LastMatchPresenter
@@ -31,7 +33,9 @@ class LastMatchFragment : Fragment(), LastMatchView {
         super.onActivityCreated(savedInstanceState)
         val league = arguments?.getParcelable("league") as League
 
-        adapter = MatchAdapter(matchs, context)
+        adapter = MatchAdapter(matchs, context){
+            context?.startActivity<MatchDetailActivity>("idEvent" to it.idMatch, "idHome" to it.idHomeTeam, "idAway" to it.idAwayTeam)
+        }
         rvFootballLast.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rvFootballLast.adapter = adapter
 
@@ -48,10 +52,6 @@ class LastMatchFragment : Fragment(), LastMatchView {
     override fun hideLoading() {
         progressBar.invisible()
     }
-
-//    override fun showLastMatchList(data: List<Match>?) {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
 
     override fun showLastMatchList(data: List<Match>) {
         matchs.clear()

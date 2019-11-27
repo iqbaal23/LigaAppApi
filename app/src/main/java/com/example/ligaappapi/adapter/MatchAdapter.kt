@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.ligaappapi.R
 import com.example.ligaappapi.model.Match
-import com.example.ligaappapi.view.DetailMatch.MatchDetailActivity
 import kotlinx.android.synthetic.main.list_match_item.view.*
-import org.jetbrains.anko.startActivity
 
-class MatchAdapter(private val matchs: List<Match>, val context: Context?)
+class MatchAdapter(private val matchs: List<Match>, val context: Context?, private val listener: (Match) -> Unit)
     : RecyclerView.Adapter<MatchViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
         return MatchViewHolder(LayoutInflater.from(context).inflate(R.layout.list_match_item, parent, false))
@@ -20,12 +18,12 @@ class MatchAdapter(private val matchs: List<Match>, val context: Context?)
     override fun getItemCount() = matchs.size
 
     override fun onBindViewHolder(holder: MatchViewHolder, posistion: Int) {
-        holder.bindItem(matchs[posistion])
+        holder.bindItem(matchs[posistion], listener)
     }
 
 }
 class MatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    fun bindItem(match: Match){
+    fun bindItem(match: Match, listener: (Match) -> Unit){
         if(match.awayScore == null){ match.homeScore = "-" }
         if(match.awayScore == null){ match.awayScore = "-" }
         itemView.homeNameTv.text = match.homeTeam
@@ -33,7 +31,7 @@ class MatchViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.homeScoreTv.text = match.homeScore
         itemView.awayScoreTv.text = match.awayScore
         itemView.dateScheduleTv.text = match.dateMatch
-        itemView.setOnClickListener { itemView.context.startActivity<MatchDetailActivity>(MatchDetailActivity.EXTRA_MATCH_DETAIL to match) }
+        itemView.setOnClickListener { listener(match) }
     }
 
 }

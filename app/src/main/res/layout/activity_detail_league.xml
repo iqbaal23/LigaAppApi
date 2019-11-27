@@ -41,7 +41,8 @@
                     android:layout_gravity="center"
                     android:id="@+id/imageLeague"
                     android:layout_width="150dp"
-                    android:layout_height="150dp"/>
+                    android:layout_height="150dp"
+                    android:contentDescription="@string/imageleague" />
 
             </LinearLayout>
 
