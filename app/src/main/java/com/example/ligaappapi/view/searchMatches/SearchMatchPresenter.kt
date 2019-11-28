@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.SearchMatches
+package com.example.ligaappapi.view.searchMatches
 
 import com.example.ligaappapi.api.ApiRepository
 import com.example.ligaappapi.api.TheSportDBApi

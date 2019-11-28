@@ -3,8 +3,8 @@ package com.example.ligaappapi.view.home
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ligaappapi.R
-import com.example.ligaappapi.view.FavoriteMatch.FavoriteMatchFragment
-import com.example.ligaappapi.view.Leagues.LeaguesFragment
+import com.example.ligaappapi.view.favoriteMatch.FavoriteMatchFragment
+import com.example.ligaappapi.view.leagues.LeaguesFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {

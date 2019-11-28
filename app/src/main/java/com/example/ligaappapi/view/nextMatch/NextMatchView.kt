@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.NextMatch
+package com.example.ligaappapi.view.nextMatch
 
 import com.example.ligaappapi.model.Match
 

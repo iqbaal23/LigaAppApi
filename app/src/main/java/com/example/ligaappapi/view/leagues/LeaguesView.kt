@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.Leagues
+package com.example.ligaappapi.view.leagues
 
 import com.example.ligaappapi.model.League
 

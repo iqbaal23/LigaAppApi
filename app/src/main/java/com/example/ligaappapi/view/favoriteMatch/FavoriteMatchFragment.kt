@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.FavoriteMatch
+package com.example.ligaappapi.view.favoriteMatch
 
 
 import android.os.Bundle
@@ -11,7 +11,7 @@ import com.example.ligaappapi.R
 import com.example.ligaappapi.adapter.FavoriteMatchAdapter
 import com.example.ligaappapi.db.FavoriteMatch
 import com.example.ligaappapi.db.database
-import com.example.ligaappapi.view.DetailMatch.MatchDetailActivity
+import com.example.ligaappapi.view.detailMatch.MatchDetailActivity
 import kotlinx.android.synthetic.main.fragment_favorite_match.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select

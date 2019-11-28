@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.Leagues
+package com.example.ligaappapi.view.leagues
 
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity

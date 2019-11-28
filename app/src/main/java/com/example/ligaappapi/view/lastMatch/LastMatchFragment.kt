@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.LastMatch
+package com.example.ligaappapi.view.lastMatch
 
 
 import android.os.Bundle
@@ -14,7 +14,7 @@ import com.example.ligaappapi.model.League
 import com.example.ligaappapi.model.Match
 import com.example.ligaappapi.util.invisible
 import com.example.ligaappapi.util.visible
-import com.example.ligaappapi.view.DetailMatch.MatchDetailActivity
+import com.example.ligaappapi.view.detailMatch.MatchDetailActivity
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_last_match.*
 import org.jetbrains.anko.startActivity

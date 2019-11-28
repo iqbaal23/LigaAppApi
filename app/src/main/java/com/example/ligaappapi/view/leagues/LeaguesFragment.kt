@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.Leagues
+package com.example.ligaappapi.view.leagues
 
 
 import android.content.Context
@@ -17,7 +17,7 @@ import com.example.ligaappapi.api.ApiRepository
 import com.example.ligaappapi.model.League
 import com.example.ligaappapi.util.invisible
 import com.example.ligaappapi.util.visible
-import com.example.ligaappapi.view.SearchMatches.SearchMatchActivity
+import com.example.ligaappapi.view.searchMatches.SearchMatchActivity
 import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView

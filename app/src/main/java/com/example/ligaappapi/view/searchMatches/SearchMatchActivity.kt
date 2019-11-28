@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.SearchMatches
+package com.example.ligaappapi.view.searchMatches
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -12,7 +12,7 @@ import com.example.ligaappapi.api.ApiRepository
 import com.example.ligaappapi.model.Match
 import com.example.ligaappapi.util.invisible
 import com.example.ligaappapi.util.visible
-import com.example.ligaappapi.view.DetailMatch.MatchDetailActivity
+import com.example.ligaappapi.view.detailMatch.MatchDetailActivity
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_search_match.*
 import org.jetbrains.anko.startActivity

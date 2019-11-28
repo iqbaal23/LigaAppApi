@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.DetailMatch
+package com.example.ligaappapi.view.detailMatch
 
 import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle

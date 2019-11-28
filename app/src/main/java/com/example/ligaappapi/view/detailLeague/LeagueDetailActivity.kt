@@ -11,9 +11,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.ligaappapi.R
 import com.example.ligaappapi.adapter.ViewPagerAdapter
 import com.example.ligaappapi.model.League
-import com.example.ligaappapi.view.LastMatch.LastMatchFragment
-import com.example.ligaappapi.view.NextMatch.NextMatchFragment
-import com.example.ligaappapi.view.SearchMatches.SearchMatchActivity
+import com.example.ligaappapi.view.lastMatch.LastMatchFragment
+import com.example.ligaappapi.view.nextMatch.NextMatchFragment
+import com.example.ligaappapi.view.searchMatches.SearchMatchActivity
 import kotlinx.android.synthetic.main.activity_detail_league.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.wrapContent
