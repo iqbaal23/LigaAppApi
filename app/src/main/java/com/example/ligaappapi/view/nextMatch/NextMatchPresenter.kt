@@ -19,7 +19,9 @@ class NextMatchPresenter(private val view: NextMatchView,
                 MatchResponse::class.java)
             uiThread {
                 view.hideLoading()
-                if(data.match != null){
+                if(data.match == null){
+                    view.showEmptyMessage()
+                } else{
                     view.showNextMatchList(data.match)
                 }
             }

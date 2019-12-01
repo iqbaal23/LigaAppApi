@@ -19,7 +19,9 @@ class SearchMatchPresenter (private val view: SearchMatchView,
                 SearchMatchResponse::class.java)
             uiThread {
                 view.hideLoading()
-                if (data.searchMatch != null){
+                if (data.searchMatch == null){
+                    view.showEmptyMessage()
+                } else{
                     view.showSearchMatchList(data.searchMatch)
                 }
             }

@@ -54,11 +54,15 @@ class SearchMatchActivity : AppCompatActivity(), SearchMatchView {
     override fun showSearchMatchList(data: List<Match>) {
         val dataFilter: List<Match> = data.filter { it.strSport == "Soccer" }
         if (dataFilter?.isEmpty()){
-            emptyMessage.setText(getString(R.string.not_found_message))
+            showEmptyMessage()
         }
         matchs.clear()
         matchs.addAll(dataFilter)
         adapter.notifyDataSetChanged()
+    }
+
+    override fun showEmptyMessage() {
+        emptyMessage.text = getString(R.string.empty_message)
     }
 
 

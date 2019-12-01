@@ -62,4 +62,8 @@ class NextMatchFragment : Fragment(), NextMatchView {
         matchs.addAll(data)
         adapter.notifyDataSetChanged()
     }
+
+    override fun showEmptyMessage() {
+        emptyMessage.text = getString(R.string.empty_message)
+    }
 }

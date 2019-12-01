@@ -6,4 +6,5 @@ interface NextMatchView {
     fun showLoading()
     fun hideLoading()
     fun showNextMatchList(data: List<Match>)
+    fun showEmptyMessage()
 }

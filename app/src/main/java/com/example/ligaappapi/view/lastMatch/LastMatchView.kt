@@ -6,4 +6,5 @@ interface LastMatchView {
     fun showLoading()
     fun hideLoading()
     fun showLastMatchList(data: List<Match>)
+    fun showEmptyMessage()
 }
