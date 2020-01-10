@@ -8,8 +8,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.ligaappapi.R
-import com.example.ligaappapi.view.detailLeague.LeagueDetailActivity
 import com.example.ligaappapi.model.League
+import com.example.ligaappapi.view.detailLeague.LeagueDetailActivity
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 

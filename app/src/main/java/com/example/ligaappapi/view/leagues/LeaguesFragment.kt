@@ -44,7 +44,7 @@ class LeaguesFragment : Fragment(), AnkoComponent<Context>, LeaguesView {
         super.onActivityCreated(savedInstanceState)
 
         setHasOptionsMenu(true)
-        activity?.setTitle(getString(R.string.leagues))
+        activity?.title = getString(R.string.leagues)
         adapter = LeaguesAdapter(leagues)
         listLeague.adapter = adapter
 

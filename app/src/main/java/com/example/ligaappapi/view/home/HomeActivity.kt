@@ -1,7 +1,7 @@
 package com.example.ligaappapi.view.home
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.example.ligaappapi.R
 import com.example.ligaappapi.view.favoriteMatch.FavoriteMatchFragment
 import com.example.ligaappapi.view.leagues.LeaguesFragment

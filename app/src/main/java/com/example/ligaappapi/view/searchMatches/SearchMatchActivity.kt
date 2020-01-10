@@ -1,7 +1,7 @@
 package com.example.ligaappapi.view.searchMatches
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.Menu
@@ -53,7 +53,7 @@ class SearchMatchActivity : AppCompatActivity(), SearchMatchView {
 
     override fun showSearchMatchList(data: List<Match>) {
         val dataFilter: List<Match> = data.filter { it.strSport == "Soccer" }
-        if (dataFilter?.isEmpty()){
+        if (dataFilter.isEmpty()){
             showEmptyMessage()
         }
         matchs.clear()
