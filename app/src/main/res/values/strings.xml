@@ -18,4 +18,6 @@
     <string name="subtitutes">Subtitutes</string>
     <string name="vs">VS</string>
     <string name="empty_message">No Match Found</string>
+    <string name="vs">VS</string>
+    <string name="search">Search</string>
 </resources>

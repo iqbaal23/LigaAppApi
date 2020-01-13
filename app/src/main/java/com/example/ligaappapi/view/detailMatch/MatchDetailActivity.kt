@@ -32,9 +32,6 @@ class MatchDetailActivity : AppCompatActivity(), MatchDetailView {
     private lateinit var idHome: String
     private lateinit var idAway: String
 
-    companion object{
-        const val EXTRA_MATCH_DETAIL = "extra_match_detail"
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_match_detail)

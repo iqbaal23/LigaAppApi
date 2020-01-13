@@ -5,8 +5,8 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 
 class ViewPagerAdapter(fragmentManager: FragmentManager?) : FragmentPagerAdapter(fragmentManager){
-    var fragmentList = arrayListOf<Fragment>()
-    var titleList = arrayListOf<String>()
+    private var fragmentList = arrayListOf<Fragment>()
+    private var titleList = arrayListOf<String>()
 
     fun populateFragment(fragment: Fragment, title: String){
         fragmentList.add(fragment)
