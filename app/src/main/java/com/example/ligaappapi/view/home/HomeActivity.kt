@@ -3,7 +3,7 @@ package com.example.ligaappapi.view.home
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.ligaappapi.R
-import com.example.ligaappapi.view.favoriteMatch.FavoriteMatchFragment
+import com.example.ligaappapi.view.favorite.FavoriteFragment
 import com.example.ligaappapi.view.leagues.LeaguesFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -40,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
         if (savedInstanceState == null){
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.main_container, FavoriteMatchFragment(), FavoriteMatchFragment::class.java.simpleName)
+                .replace(R.id.main_container, FavoriteFragment(), FavoriteFragment::class.java.simpleName)
                 .commit()
         }
     }

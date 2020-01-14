@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.SearchView
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.ProgressBar
@@ -17,7 +16,7 @@ import com.example.ligaappapi.api.ApiRepository
 import com.example.ligaappapi.model.League
 import com.example.ligaappapi.util.invisible
 import com.example.ligaappapi.util.visible
-import com.example.ligaappapi.view.searchMatches.SearchMatchActivity
+import com.example.ligaappapi.view.OptionSearchFragment
 import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
@@ -102,20 +101,20 @@ class LeaguesFragment : Fragment(), AnkoComponent<Context>, LeaguesView {
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.menu_search, menu)
-        val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView?
-        searchView?.queryHint = getString(R.string.search_matches)
+        inflater?.inflate(R.menu.btn_search, menu)
+    }
 
-        searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                context?.startActivity<SearchMatchActivity>("query" to query)
-                return false
-            }
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when(item?.itemId){
+            R.id.btn_search -> {
+                val option = OptionSearchFragment()
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
+                val fragmenManager = childFragmentManager
+                option.show(fragmenManager, OptionSearchFragment::class.java.simpleName)
+                true
             }
-        })
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 

@@ -3,7 +3,6 @@ package com.example.ligaappapi.view.detailLeague
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
 import com.bumptech.glide.Glide
@@ -11,11 +10,12 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.ligaappapi.R
 import com.example.ligaappapi.adapter.ViewPagerAdapter
 import com.example.ligaappapi.model.League
+import com.example.ligaappapi.view.OptionSearchFragment
 import com.example.ligaappapi.view.lastMatch.LastMatchFragment
 import com.example.ligaappapi.view.nextMatch.NextMatchFragment
-import com.example.ligaappapi.view.searchMatches.SearchMatchActivity
+import com.example.ligaappapi.view.standings.StandingsFragment
+import com.example.ligaappapi.view.teams.TeamsFragment
 import kotlinx.android.synthetic.main.activity_detail_league.*
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.wrapContent
 
 class LeagueDetailActivity : AppCompatActivity(){
@@ -35,10 +35,16 @@ class LeagueDetailActivity : AppCompatActivity(){
         val adapter = ViewPagerAdapter(supportFragmentManager)
         val lastMatchFragment = LastMatchFragment()
         val nextMatchFragment = NextMatchFragment()
+        val standingsFragment = StandingsFragment()
+        val teamsFragment = TeamsFragment()
         lastMatchFragment.arguments = bundle
         nextMatchFragment.arguments = bundle
+        standingsFragment.arguments = bundle
+        teamsFragment.arguments = bundle
         adapter.populateFragment(lastMatchFragment, getString(R.string.last_match))
         adapter.populateFragment(nextMatchFragment, getString(R.string.next_match))
+        adapter.populateFragment(standingsFragment, getString(R.string.standings))
+        adapter.populateFragment(teamsFragment, getString(R.string.teams))
         viewpagerLeague.adapter = adapter
         tabs.setupWithViewPager(viewpagerLeague)
 
@@ -59,20 +65,7 @@ class LeagueDetailActivity : AppCompatActivity(){
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_search, menu)
-        val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView?
-        searchView?.queryHint = getString(R.string.search_matches)
-
-        searchView?.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                applicationContext?.startActivity<SearchMatchActivity>("query" to query)
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
+        menuInflater.inflate(R.menu.btn_search, menu)
         return true
     }
 
@@ -80,6 +73,13 @@ class LeagueDetailActivity : AppCompatActivity(){
         return when (item?.itemId) {
             android.R.id.home -> {
                 finish()
+                true
+            }
+            R.id.btn_search -> {
+                val option = OptionSearchFragment()
+
+                val fragmentManager = supportFragmentManager
+                option.show(fragmentManager, OptionSearchFragment::class.java.simpleName)
                 true
             }
             else -> super.onOptionsItemSelected(item)

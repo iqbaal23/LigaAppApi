@@ -17,7 +17,18 @@
     <string name="forward">Forward</string>
     <string name="subtitutes">Subtitutes</string>
     <string name="vs">VS</string>
-    <string name="empty_message">No Match Found</string>
-    <string name="vs">VS</string>
+    <string name="empty_message">Data Not Found</string>
     <string name="search">Search</string>
+    <string name="teams">Teams</string>
+    <string name="standings">Standings</string>
+    <string name="imageTeam">ImageTeam</string>
+    <string name="description">Description</string>
+    <string name="search_team">Search Team</string>
+    <string name="matchs">Matchs</string>
+    <string name="select_type">Select Type</string>
+    <string name="close">CLOSE</string>
+    <string name="select">SELECT</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

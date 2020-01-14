@@ -26,8 +26,7 @@ class SearchMatchActivity : AppCompatActivity(), SearchMatchView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_match)
 
-        val query = intent.getStringExtra("query")
-        supportActionBar?.title = query
+        supportActionBar?.title = getString(R.string.search_matches)
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -40,7 +39,7 @@ class SearchMatchActivity : AppCompatActivity(), SearchMatchView {
         val request = ApiRepository()
         val gson = Gson()
         presenter = SearchMatchPresenter(this, request, gson)
-        presenter.searchMatchList(query)
+        presenter.searchMatchList("")
     }
 
     override fun showLoading() {
@@ -67,7 +66,7 @@ class SearchMatchActivity : AppCompatActivity(), SearchMatchView {
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_search, menu)
+        menuInflater.inflate(R.menu.search_menu, menu)
         val searchView = menu?.findItem(R.id.action_search)?.actionView as SearchView?
         searchView?.queryHint = getString(R.string.search_matches)
 

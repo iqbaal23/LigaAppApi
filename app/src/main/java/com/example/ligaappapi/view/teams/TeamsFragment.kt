@@ -1,4 +1,4 @@
-package com.example.ligaappapi.view.lastMatch
+package com.example.ligaappapi.view.teams
 
 
 import android.os.Bundle
@@ -7,43 +7,48 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import com.example.ligaappapi.R
-import com.example.ligaappapi.adapter.MatchAdapter
+import com.example.ligaappapi.adapter.TeamAdapter
 import com.example.ligaappapi.api.ApiRepository
 import com.example.ligaappapi.model.League
-import com.example.ligaappapi.model.Match
+import com.example.ligaappapi.model.Team
 import com.example.ligaappapi.util.invisible
 import com.example.ligaappapi.util.visible
-import com.example.ligaappapi.view.detailMatch.MatchDetailActivity
+import com.example.ligaappapi.view.detailTeam.DetailTeamActivity
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_last_match.*
+import kotlinx.android.synthetic.main.fragment_teams.*
 import org.jetbrains.anko.startActivity
 
-class LastMatchFragment : Fragment(), LastMatchView {
-    private lateinit var presenter: LastMatchPresenter
-    private lateinit var adapter: MatchAdapter
-    private var matchs: MutableList<Match> = mutableListOf()
+/**
+ * A simple [Fragment] subclass.
+ */
+class TeamsFragment : Fragment(), TeamsView {
+    private lateinit var presenter: TeamsPresenter
+    private lateinit var adapter: TeamAdapter
+    private val teams: MutableList<Team> = mutableListOf()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_last_match, container, false)
+        return inflater.inflate(R.layout.fragment_teams, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val league = arguments?.getParcelable("league") as League
 
-        adapter = MatchAdapter(matchs, context){
-            context?.startActivity<MatchDetailActivity>("idEvent" to it.idMatch, "idHome" to it.idHomeTeam, "idAway" to it.idAwayTeam)
+        adapter = TeamAdapter(teams, context){
+            context?.startActivity<DetailTeamActivity>("idTeam" to it.teamId)
         }
-        rvFootballLast.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        rvFootballLast.adapter = adapter
+        rvTeam.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        rvTeam.adapter = adapter
 
         val request = ApiRepository()
         val gson = Gson()
-        presenter = LastMatchPresenter(this, request, gson)
-        presenter.getLastMatchList(league.leagueId)
+        presenter = TeamsPresenter(this, request, gson)
+        presenter.getTeamList(league.leagueId)
     }
+
 
     override fun showLoading() {
         progressBar.visible()
@@ -55,9 +60,9 @@ class LastMatchFragment : Fragment(), LastMatchView {
         }
     }
 
-    override fun showLastMatchList(data: List<Match>) {
-        matchs.clear()
-        matchs.addAll(data)
+    override fun showLeagueList(data: List<Team>) {
+        teams.clear()
+        teams.addAll(data)
         adapter.notifyDataSetChanged()
     }
 
@@ -66,4 +71,5 @@ class LastMatchFragment : Fragment(), LastMatchView {
             emptyMessage.text = getString(R.string.empty_message)
         }
     }
+
 }

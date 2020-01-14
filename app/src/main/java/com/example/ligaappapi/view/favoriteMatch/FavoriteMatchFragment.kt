@@ -30,7 +30,7 @@ class FavoriteMatchFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        activity?.title = getString(R.string.favorites)
+
         adapter = FavoriteMatchAdapter(favorites, requireContext()){
             context?.startActivity<MatchDetailActivity>("idEvent" to it.eventId, "idHome" to it.homeId, "idAway" to it.awayId)
         }

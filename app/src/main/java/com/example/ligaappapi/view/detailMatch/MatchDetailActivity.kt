@@ -163,7 +163,7 @@ class MatchDetailActivity : AppCompatActivity(), MatchDetailView {
                 .whereArgs("EVENT_ID = {idEvent}",
                     "idEvent" to idEvent)
             val favorite = result.parseList(classParser<FavoriteMatch>())
-            if (!favorite.isEmpty()) isFavorite = true
+            if (favorite.isNotEmpty()) isFavorite = true
         }
     }
 }

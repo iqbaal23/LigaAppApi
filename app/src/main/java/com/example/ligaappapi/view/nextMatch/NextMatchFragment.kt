@@ -54,7 +54,9 @@ class NextMatchFragment : Fragment(), NextMatchView {
     }
 
     override fun hideLoading() {
-        progressBar.invisible()
+        if (progressBar != null){
+            progressBar.invisible()
+        }
     }
 
     override fun showNextMatchList(data: List<Match>) {
@@ -64,6 +66,8 @@ class NextMatchFragment : Fragment(), NextMatchView {
     }
 
     override fun showEmptyMessage() {
-        emptyMessage.text = getString(R.string.empty_message)
+        if (emptyMessage != null){
+            emptyMessage.text = getString(R.string.empty_message)
+        }
     }
 }

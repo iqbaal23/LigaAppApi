@@ -19,14 +19,14 @@ class HomeActivityTest {
 
     @Test
     fun testSearchBehaviour() {
-        Espresso.onView(withId(R.id.action_search))
+        Espresso.onView(withId(R.id.btn_search))
             .check(matches(isDisplayed()))
-        Espresso.onView(withId(R.id.action_search)).perform(click())
+        Espresso.onView(withId(R.id.btn_search)).perform(click())
         Espresso.onView(isAssignableFrom(EditText::class.java))
             .perform(typeText("Arsenal"), pressImeActionButton())
         Thread.sleep(3000)
 
-        Espresso.onView(withId(R.id.action_search)).perform(click())
+        Espresso.onView(withId(R.id.btn_search)).perform(click())
         Espresso.onView(isAssignableFrom(EditText::class.java)).perform(typeText("Barcelona"))
         Thread.sleep(3000)
         Espresso.onView(isAssignableFrom(EditText::class.java)).perform(clearText())
